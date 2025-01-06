@@ -25,6 +25,7 @@
             @include('layouts.navigation')
 
             <main>
+                @include('partials.status')
                 @yield('content')
             </main>
         </div>

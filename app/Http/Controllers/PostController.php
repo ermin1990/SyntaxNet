@@ -2,21 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
+use App\Models\PostModel;
+use App\Models\CategoryModel;
+use App\Models\PostTagModel;
+use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    private $postRepository;
+    private $postCategory;
+    private $postTag;
+
+    public function __construct()
+    {
+        $this->postRepository = new PostRepository();
+        $this->postCategory = new CategoryModel();
+        $this->postTag = new PostTagModel();
+    }
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function getAll()
+    {
+        $posts = PostModel::with('tags')
+            ->orderBy('created_at', 'asc')
+            ->where('status', "published")
+            ->get();
+        return $posts;
+
+    }
     public function create()
     {
         //
@@ -25,38 +45,50 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+
+
+        $post = PostModel::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'slug' => $this->postRepository->generateUniqueSlug($request->title),
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category
+        ]);
+
+
+
+        if(isset($request->tag)){
+            foreach ($request->tag as $tag) {
+                $this->postTag->create([
+                    'post_id' => $post->id,
+                    'tag_id' => $tag
+                ]);
+            }
+        }
+
+        return redirect()->route('home')->with('success', 'PostRequest created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

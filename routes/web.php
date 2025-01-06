@@ -1,18 +1,29 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
+//PUBLIC ROUTING
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//ADMIN ROUTING
+
+
+
+//EDITOR ROUTING
+
+//---------------------------
+Route::controller(PostController::class)->prefix("/post")
+    ->name('post.')
+    ->group(function () {
+        Route::post("/store", 'store')->name('store');
+    });
 
 
 Route::middleware('auth')->group(function () {
