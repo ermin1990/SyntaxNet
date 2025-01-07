@@ -1,18 +1,38 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdmiEditorCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
+//PUBLIC ROUTING
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tag/{tag}', [App\Http\Controllers\TagController::class, 'index'])->name('tag.index');
+
+Route::get('category/{category}', [App\Http\Controllers\PostCategoryController::class, 'index'])->name('category.index');
+
+
+
+//ADMIN ROUTING
+
+
+
+//EDITOR ROUTING
+
+//---------------------------
+Route::controller(PostController::class)->prefix("/post")
+    ->name('post.')
+    ->middleware(['auth', AdmiEditorCheckMiddleware::class])
+    ->group(function () {
+        Route::post("/store", 'store')->name('store');
+        Route::get("/{slug}", 'show')->name('show');
+        Route::get("/edit/{id}", 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
 
 
 Route::middleware('auth')->group(function () {

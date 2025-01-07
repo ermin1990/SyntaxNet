@@ -10,8 +10,9 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Styles -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.css">
 
 
 
@@ -25,12 +26,11 @@
             @include('layouts.navigation')
 
             <main>
+                @include('partials.status')
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-2">
                 @yield('content')
+                </div>
             </main>
         </div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/44.1.0/ckeditor5.umd.js"></script>
-        <script>
-            CKEDITOR.replace('editor');
-        </script>
     </body>
 </html>
