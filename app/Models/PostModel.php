@@ -37,7 +37,6 @@ class PostModel extends Model
 
     }
 
-
     public function comments()
     {
         return $this->hasMany(CommentModel::class, 'post_id');

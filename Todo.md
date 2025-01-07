@@ -28,8 +28,8 @@
 3. Prikaz stranice
 
 ### Profil
-1. Prikaz postova profila
-2. Zadnji komentari profila
-3. Kreirane stranice
+1. Prikaz postova profila [✔]
+2. Zadnji komentari profila [✔]
+3. Kreirane stranice 
 
 

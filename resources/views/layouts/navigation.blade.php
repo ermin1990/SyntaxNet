@@ -55,6 +55,7 @@
                     </svg>
                 </div>
                 @if(Auth::check())
+                    <a href="/profile/{{Auth::user()->id}}" class="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">Moj profil</a>
                     <form action="{{route('logout')}}">
                         <button type="submit" class="px-4 py-2 text-sm font-medium bg-red-600 text-white rounded-md hover:bg-red-700 hover:text-white transition-colors duration-200">Logout</button>
                     </form>

@@ -19,4 +19,10 @@ class CommentModel extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+
+    public function post()
+    {
+        return $this->belongsTo(PostModel::class, 'post_id');
+    }
 }

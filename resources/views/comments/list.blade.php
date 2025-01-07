@@ -6,6 +6,9 @@
                 <div>
                     <p><strong>{{ $comment->user->name }}</strong> - {{ $comment->created_at->diffForHumans() }}</p>
                     <p>{{ $comment->textcomment }}</p>
+                    @if(isset($showPost))
+                        <div class="text-sm mt-2 p-2 py-1 rounded"><span class="text-gray-500">|| Commented on:</span> <a class="text-blue-500 hover:text-blue-700" href="{{route('post.show', $comment->post->slug)}}">{{$comment->post->title}}</a></div>
+                    @endif
                 </div>
 
                 <div>
@@ -18,5 +21,6 @@
 
         </div>
     @endforeach
+
 
 @endif

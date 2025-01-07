@@ -45,4 +45,21 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function posts()
+    {
+        return $this->hasMany(PostModel::class);
+    }
+
+    public function postPagination($perPage)
+    {
+        return $this->posts()->paginate($perPage);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(CommentModel::class)
+            ->orderBy('created_at', 'desc');
+    }
+
 }

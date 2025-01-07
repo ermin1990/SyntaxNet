@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
