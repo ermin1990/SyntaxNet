@@ -6,7 +6,9 @@
     </div>
     <a href="{{ route('post.show', $post->slug) }}" class="text-2xl font-bold text-gray-900 mb-2 hover:text-blue-800">{{ $post->title }}</a>
     <p class="text-gray-600 mb-4">{{ Str::limit($post->description, 150) }}</p>
+    @if(isset($showAuthor))
     <p class="text-gray-600 mb-4 text-sm font-bold">Autor: {{ $post->user->name }}</p>
+    @endif
     @if($post->tags->count() > 0)
     <div class="text-sm text-gray-500 m-4 ml-0">
         Tagovi:
@@ -26,4 +28,24 @@
             </button>
         </div>
     </div>
+    @auth
+        <div class=" mb-4 flex justify-end">
+            @if(auth()->id() === $post->user_id)
+                <div class="flex gap-2">
+                    <div class="mt-4">
+                        <a href="{{ route('post.edit', $post->id) }}"
+                           class="text-sm text-black bg-yellow-300 px-2 py-1 rounded hover:bg-yellow-400">
+                            Edit
+                        </a>
+                    </div>
+
+                    <div class="mt-4">
+                        <a class="text-sm text-white bg-red-500 px-2 py-1 rounded hover:bg-red-700"
+                           href="{{ route('post.destroy', $post->id) }}">Delete
+                        </a>
+                    </div>
+                </div>
+            @endif
+        </div>
+    @endauth
 </div>
