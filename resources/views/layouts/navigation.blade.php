@@ -1,9 +1,7 @@
 <script>
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Categories', href: '/categories' },
-        { name: 'About', href: '/about' }
+
     ];
 
     function toggleMobileMenu(open) {

@@ -13,7 +13,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/tag/{tag}', [App\Http\Controllers\TagController::class, 'index'])->name('tag.index');
 
 Route::get('category/{category}', [App\Http\Controllers\PostCategoryController::class, 'index'])->name('category.index');
-
+Route::get('/post/{slug}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
 
 
 //ADMIN ROUTING
@@ -28,10 +28,17 @@ Route::controller(PostController::class)->prefix("/post")
     ->middleware(['auth', AdmiEditorCheckMiddleware::class])
     ->group(function () {
         Route::post("/store", 'store')->name('store');
-        Route::get("/{slug}", 'show')->name('show');
         Route::get("/edit/{id}", 'edit')->name('edit');
         Route::put('/update/{id}', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+Route::controller(\App\Http\Controllers\CommentController::class)->prefix("/comment")
+    ->name('comment.')
+    ->middleware(['auth', AdmiEditorCheckMiddleware::class])
+    ->group(function () {
+        Route::post("/store", 'store')->name('store');
+        Route::get("/destroy/{comment}", 'destroy')->name('destroy');
     });
 
 

@@ -76,7 +76,7 @@ class PostController extends Controller
 
     public function show(string $slug)
     {
-        $post = PostModel::with('tags')->where('slug', $slug)->first();
+        $post = PostModel::with('tags','comments')->where('slug', $slug)->first();
         return view('posts.show', compact('post'));
     }
 

@@ -2,64 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentRequest;
 use App\Models\CommentModel;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function store(CommentRequest $request)
     {
-        //
+        try {
+            CommentModel::create([
+                'post_id' => $request->post_id,
+                'textcomment' => $request->textcomment,
+                'user_id' => auth()->user()->id
+            ]);
+            return redirect()->back()->with('success', 'Comment created successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CommentModel $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(CommentModel $comment)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, CommentModel $comment)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(CommentModel $comment)
     {
-        //
+
+        if($comment->user_id == auth()->user()->id){
+            $comment->delete();
+            return redirect()->back()->with('success', 'Comment deleted successfully');
+        }else{
+            return redirect()->back()->with('error', 'You are not authorized to delete this comment');
+        }
     }
 }
