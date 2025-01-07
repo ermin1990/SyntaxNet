@@ -13,8 +13,8 @@
 8. Brisanje komentara (korisnik koji je objavio)
 
 ### Prikaz postova po kategoriji/tagu
-1. Stranica sa prikazom svih postova po kategoriji
-2. Stranica sa prikazom svih postova po tagu
+1. Stranica sa prikazom svih postova po kategoriji [✔]
+2. Stranica sa prikazom svih postova po tagu [✔]
 
 ### Admin
 1. Odobravanje posta
