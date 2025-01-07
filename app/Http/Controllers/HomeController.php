@@ -23,7 +23,7 @@ class HomeController extends Controller
         $posts = PostModel::with('tags')
             ->orderBy('created_at', 'desc')
             ->where('status', "published")
-            ->get();
+            ->paginate(3);
 
 //        dd($posts);
 

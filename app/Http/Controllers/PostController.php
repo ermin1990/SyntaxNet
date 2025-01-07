@@ -134,4 +134,21 @@ class PostController extends Controller
         return redirect()->route('home')->with('error', 'Post not found');
     }
 
+    public function getPostsByTag($id)
+    {
+
+        $tag = TagModel::where('id', $id)->first();
+        if ($tag == null) {
+            return redirect()->route('home')->with('error', 'Tag not found');
+        }
+        $posts = PostModel::with('tags')
+            ->whereHas('tags', function ($query) use ($tag) {
+                $query->where('tag_id', $tag->id);
+            })
+            ->orderBy('created_at', 'desc')
+            ->where('status', "published")
+            ->paginate(3);
+        return $posts;
+    }
+
 }

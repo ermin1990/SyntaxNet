@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 
 //PUBLIC ROUTING
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tag/{tag}', [App\Http\Controllers\TagController::class, 'index'])->name('tag.index');
+
+Route::get('category/{category}', [App\Http\Controllers\PostCategoryController::class, 'index'])->name('category.index');
 
 
 
@@ -22,7 +25,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 //---------------------------
 Route::controller(PostController::class)->prefix("/post")
     ->name('post.')
-    ->middleware('auth', AdmiEditorCheckMiddleware::class)
+    ->middleware(['auth', AdmiEditorCheckMiddleware::class])
     ->group(function () {
         Route::post("/store", 'store')->name('store');
         Route::get("/{slug}", 'show')->name('show');

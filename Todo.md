@@ -12,6 +12,10 @@
 7. Prikaz komentara
 8. Brisanje komentara (korisnik koji je objavio)
 
+### Prikaz postova po kategoriji/tagu
+1. Stranica sa prikazom svih postova po kategoriji
+2. Stranica sa prikazom svih postova po tagu
+
 ### Admin
 1. Odobravanje posta
 2. Brisanje posta
@@ -28,6 +32,4 @@
 2. Zadnji komentari profila
 3. Kreirane stranice
 
-### Prikaz postova po kategoriji/tagu
-1. Stranica sa prikazom svih postova po kategoriji
-2. Stranica sa prikazom svih postova po tagu
+

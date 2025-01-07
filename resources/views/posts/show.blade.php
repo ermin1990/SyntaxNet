@@ -4,17 +4,17 @@
     <div class="container">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <div class="flex justify-between items-center mb-4">
-                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">{{ $post->category->name }}</span>
+                <a href="{{ route('category.index', $post->category->slug) }}" class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">{{ $post->category->name }}</a>
                 <span class="text-gray-500 text-sm">{{ $post->created_at->diffForHumans() }}</span>
             </div>
             <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ $post->title }}</h3>
             <p class="text-gray-600 mb-4">{{ $post->description }}</p>
-            <p class="text-gray-600 mb-4 text-sm font-bold">Objavio: {{ $post->user->name }}</p>
+            <p class="text-gray-600 mb-4 text-sm font-bold">Autor: {{ $post->user->name }}</p>
             @if($post->tags->count() > 0)
                 <div class="text-sm text-gray-500 m-4 ml-0">
                     Tagovi:
                     @foreach($post->tags as $tag)
-                        <span class="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">{{ $tag->name }}</span>
+                        <a href="{{ route('tag.index', $tag->slug) }}" class="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">{{ $tag->name }}</a>
                     @endforeach
                 </div>
             @endif
