@@ -8,9 +8,9 @@
 3. Prikaz Tagova u postu [✔]
 4. Editovanje posta [✔]
 5. Brisanje posta (korisnik koji je objavio) [✔]
-6. Dodavanje komentara
-7. Prikaz komentara
-8. Brisanje komentara (korisnik koji je objavio)
+6. Dodavanje komentara [✔]
+7. Prikaz komentara [✔]
+8. Brisanje komentara (korisnik koji je objavio) [✔]
 
 ### Prikaz postova po kategoriji/tagu
 1. Stranica sa prikazom svih postova po kategoriji [✔]
