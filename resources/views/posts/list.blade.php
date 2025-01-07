@@ -30,6 +30,6 @@
                 <span>{{ $post->likes_count }}</span>
             </button>
         </div>
-        <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold">Opširnije →</a>
+        <a href="{{ route('post.show', $post->slug) }}" class="text-blue-600 hover:text-blue-800 font-semibold">Opširnije →</a>
     </div>
 </div>

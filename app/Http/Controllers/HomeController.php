@@ -21,7 +21,7 @@ class HomeController extends Controller
         $categories = CategoryModel::all();
         $alltags = TagModel::all();
         $posts = PostModel::with('tags')
-            ->orderBy('created_at', 'asc')
+            ->orderBy('created_at', 'desc')
             ->where('status', "published")
             ->get();
 

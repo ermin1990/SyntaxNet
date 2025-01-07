@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdmiEditorCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,8 +22,13 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 //---------------------------
 Route::controller(PostController::class)->prefix("/post")
     ->name('post.')
+    ->middleware('auth', AdmiEditorCheckMiddleware::class)
     ->group(function () {
         Route::post("/store", 'store')->name('store');
+        Route::get("/{slug}", 'show')->name('show');
+        Route::get("/edit/{id}", 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 
 
