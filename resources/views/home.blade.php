@@ -3,7 +3,7 @@
 @section('content')
 
     @if(Auth::check())
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">Create Post</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-2">Create Post</h2>
         @include('posts.create')
 
     @else
@@ -19,7 +19,7 @@
                 <div>
                     <h2 class="font-bold text-gray-900 mb-1">Categories</h2>
 
-                        @include('category.group')
+                    @include('category.group')
 
                 </div>
             @endif
@@ -28,13 +28,25 @@
                 <div>
                     <h2 class="font-bold text-gray-900 mb-1">Tags</h2>
 
-                        @include('tag.group')
+                    @include('tag.group')
 
                 </div>
             @endif
 
+
         </div>
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">Recent Posts</h2>
+        @if(isset($pages))
+
+            <h2 class="font-bold text-3xl text-gray-900 mb-1">Pages</h2>
+            <div class="flex gap-2 mb-4">
+                @foreach($pages as $page)
+                    @include('page.group')
+                @endforeach
+            </div>
+
+        @endif
+
+        <h2 class="text-3xl font-bold text-gray-900 mb-1">Recent Posts</h2>
         @if(isset($posts))
             @foreach($posts as $post)
                 @include('posts.list', ['post' => $post])

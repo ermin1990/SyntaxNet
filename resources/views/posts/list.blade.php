@@ -34,14 +34,15 @@
                 <div class="flex gap-2">
                     <div class="mt-4">
                         <a href="{{ route('post.edit', $post->id) }}"
-                           class="text-sm text-black bg-yellow-300 px-2 py-1 rounded hover:bg-yellow-400">
-                            Edit
+                           class=" text-yellow-500 hover:text-yellow-800">
+                            @include('icons/edit')
                         </a>
                     </div>
 
                     <div class="mt-4">
-                        <a class="text-sm text-white bg-red-500 px-2 py-1 rounded hover:bg-red-700"
-                           href="{{ route('post.destroy', $post->id) }}">Delete
+                        <a class=" text-red-600 hover:text-red-800"
+                           href="{{ route('post.destroy', $post->id) }}">
+                            @include('icons/delete')
                         </a>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 <script>
     const navLinks = [
         { name: 'Home', href: '/' },
+        { name: 'Pages', href: '/pages' },
 
     ];
 

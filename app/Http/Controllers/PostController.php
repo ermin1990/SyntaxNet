@@ -8,19 +8,19 @@ use App\Models\PostModel;
 use App\Models\CategoryModel;
 use App\Models\PostTagModel;
 use App\Models\TagModel;
-use App\Repositories\PostRepository;
+use App\Repositories\UtilsRepostory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
 
-    private $postRepository;
+    private $utilRepository;
     private $postCategory;
     private $postTag;
 
     public function __construct()
     {
-        $this->postRepository = new PostRepository();
+        $this->utilRepository = new UtilsRepostory();
         $this->postCategory = new CategoryModel();
         $this->postTag = new PostTagModel();
     }
@@ -54,7 +54,7 @@ class PostController extends Controller
         $post = PostModel::create([
             'title' => $request->title,
             'description' => trim(strip_tags($request->description)),
-            'slug' => $this->postRepository->generateUniqueSlug($request->title),
+            'slug' => $this->utilRepository->generatePostUniqueSlug($request->title),
             'user_id' => auth()->user()->id,
             'category_id' => $request->category
         ]);
@@ -107,7 +107,7 @@ class PostController extends Controller
             $post->title = $request->title;
             $post->description = trim(strip_tags($request->description));
             $post->category_id = $request->category_id;
-            $post->slug = $this->postRepository->generateUniqueSlug($request->title);
+            $post->slug = $this->utilRepository->generatePostUniqueSlug($request->title);
             $post->save();
             $post->tags()->sync($request->tag);
             return redirect()->route('home')->with('success', 'Post updated successfully');
