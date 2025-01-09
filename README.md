@@ -26,10 +26,10 @@ This project is a content management system (CMS) built with Laravel to manage c
 - **View Posts by Tag** ✅
 
 ### Admin Panel
-- **Approve Post** ✅
-- **Delete Post** ✅
-- **Edit Post** ✅
-- **Delete Comment** ✅
+- **Approve Post** 
+- **Delete Post** 
+- **Edit Post** 
+- **Delete Comment** 
 
 ### Pages
 - **Create Page** ✅
