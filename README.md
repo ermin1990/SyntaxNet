@@ -26,10 +26,13 @@ This project is a content management system (CMS) built with Laravel to manage c
 - **View Posts by Tag** ✅
 
 ### Admin Panel
-- **Approve Post** 
-- **Delete Post** 
-- **Edit Post** 
-- **Delete Comment** 
+- **Odobravanje posta** ✅
+- **Brisanje posta** ✅
+- **Editovanje posta** ✅
+- **Brisanje komentara** ✅
+- **Prikazivanje svih postova** ✅
+- **Editovanje i dodavanje kategorija/tagova** ✅
+- **Upravljanje korisnicima (promjena role)** ✅
 
 ### Pages
 - **Create Page** ✅
