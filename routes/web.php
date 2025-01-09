@@ -1,21 +1,18 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use App\Http\Middleware\AdmiEditorCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
 
 
-//PUBLIC ROUTING
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/tag/{tag}', [App\Http\Controllers\TagController::class, 'index'])->name('tag.index');
-
-Route::get('/category/{category}', [App\Http\Controllers\PostCategoryController::class, 'index'])->name('category.index');
-Route::get('/post/{slug}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
-Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
 //ADMIN ROUTING
 
@@ -42,7 +39,16 @@ Route::controller(CommentController::class)->prefix("/comment")
         Route::get("/destroy/{comment}", 'destroy')->name('destroy');
     });
 
-
+Route::controller(PageController::class)->prefix("/page")
+    ->name('page.')
+    ->middleware(['auth', AdmiEditorCheckMiddleware::class])
+    ->group(function () {
+        Route::view("/addnew", 'page.add')->name('addnew');
+        Route::post("/store", 'store')->name('store');
+        Route::get("/edit/{id}", 'edit')->name('edit');
+        Route::put("/update/{page}", 'update')->name('update');
+        Route::get("/delete/{page}", 'destroy')->name('delete');
+    });
 
 
 Route::middleware('auth')->group(function () {
@@ -53,5 +59,16 @@ Route::middleware('auth')->group(function () {
 
 
 });
+
+//PUBLIC ROUTING
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/tag/{tag}', [TagController::class, 'index'])->name('tag.index');
+
+Route::get('/category/{category}', [PostCategoryController::class, 'index'])->name('category.index');
+Route::get('/post/{slug}', [PostController::class, 'show'])->name('post.show');
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::get('/pages',[PageController::class, 'index'])->name('page.index');
+Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\PageModel;
 use App\Models\PostModel;
 use App\Models\TagModel;
 
@@ -25,9 +26,8 @@ class HomeController extends Controller
             ->where('status', "published")
             ->paginate(3);
 
-//        dd($posts);
-
-        return view('home', compact('posts', 'categories', 'alltags'));
+        $pages = PageModel::all()->take(4);
+        return view('home', compact('posts', 'categories', 'alltags', 'pages'));
     }
 
 

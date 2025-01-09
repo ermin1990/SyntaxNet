@@ -62,4 +62,9 @@ class User extends Authenticatable
             ->orderBy('created_at', 'desc');
     }
 
+    public function pages()
+    {
+        return $this->hasMany(PageModel::class);
+    }
+
 }

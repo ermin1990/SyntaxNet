@@ -26,7 +26,7 @@
                     <span class="text-gray-600">Comments</span>
                 </div>
                 <div class="text-center">
-                    <span class="block text-2xl font-bold text-gray-900" id="pagesCount">5</span>
+                    <span class="block text-2xl font-bold text-gray-900" id="pagesCount">{{ $user->pages->count() }}</span>
                     <span class="text-gray-600">Pages</span>
                 </div>
             </div>
@@ -69,13 +69,14 @@
                 </div>
 
                 <div id="pagesGrid" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow">
-                        <h3 class="text-lg font-semibold text-gray-900">About Us</h3>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-sm text-gray-500">Last edited: 1 week ago</span>
-                            <span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Published</span>
-                        </div>
-                    </div>
+                    @if(isset($user->pages))
+                        @foreach($user->pages as $page)
+                            @include('page.list', ['page' => $page])
+                        @endforeach
+                    @else
+                        <p>No pages yet</p>
+                    @endif
+
                 </div>
             </div>
         </div>

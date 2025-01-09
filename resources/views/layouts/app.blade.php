@@ -10,10 +10,9 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Styles -->
         <script src="https://cdn.tailwindcss.com"></script>
 
+        <!-- Styles -->
 
 
 
@@ -32,5 +31,19 @@
                 </div>
             </main>
         </div>
+
+    @include('partials.footer')
+
+
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#textcontent' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
+
     </body>
 </html>
