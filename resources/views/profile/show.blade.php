@@ -64,17 +64,19 @@
                     @if($user->comments->count() > 0)
                         @include('comments.list', ['comments' => $user->comments, 'showPost' => true])
                     @else
-                        <p>No comments yet</p>
+                        <p class="text-center text-gray-600 w-full">No comments yet</p>
                     @endif
                 </div>
 
-                <div id="pagesGrid" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @if(isset($user->pages))
+                <div id="pagesGrid" class="tab-content hidden space-y-4">
+
+                    @if($user->pages->count() > 0)
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         @foreach($user->pages as $page)
                             @include('page.list', ['page' => $page])
-                        @endforeach
+                        @endforeach</div>
                     @else
-                        <p>No pages yet</p>
+                        <p class="text-center text-gray-600 w-full">No pages yet</p>
                     @endif
 
                 </div>

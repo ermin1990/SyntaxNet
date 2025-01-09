@@ -1,5 +1,5 @@
-<div class="bg-white p-6 rounded-lg shadow">
-    <a href="{{ route('page.show', $page->slug) }}" class="text-lg font-semibold text-gray-900 hover:text-blue-800">{{ $page->title }}</a>
+<a href="{{ route('page.show', $page->slug) }}" class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <p class="text-lg font-semibold text-gray-900 hover:text-blue-800">{{ $page->title }}</p>
     <div class="mt-4 flex items-center justify-between">
         <span class="text-sm text-gray-500">Last edited: {{ $page->updated_at->format('F j, Y') }}</span>
 
@@ -17,4 +17,4 @@
             </div>
         @endif
     @endif
-</div>
+</a>

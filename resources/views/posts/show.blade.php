@@ -10,7 +10,7 @@
             </div>
             <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ $post->title }}</h3>
             <p class="text-gray-600 mb-4">{!!  $post->description !!}</p>
-            <p class="text-gray-600 mb-4 text-sm font-bold">Autor: {{ $post->user->name }}</p>
+            <a href="{{ route('profile.show', $post->user) }}" class="text-gray-600 mb-4 text-sm font-bold">Autor: {{ $post->user->name }}</a>
             @if($post->tags->count() > 0)
                 <div class="text-sm text-gray-500 m-4 ml-0">
                     Tagovi:

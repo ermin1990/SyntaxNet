@@ -17,10 +17,10 @@
 2. Stranica sa prikazom svih postova po tagu [✔]
 
 ### Admin
-1. Odobravanje posta
-2. Brisanje posta
-3. Editovanje posta
-4. Brisanje komentara
+1. Odobravanje posta [✔]
+2. Brisanje posta [✔]
+3. Editovanje posta [✔]
+4. Brisanje komentara [✔]
 
 ### Stranica
 1. Kreiranje stranice [✔]
