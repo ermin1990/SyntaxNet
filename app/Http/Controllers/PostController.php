@@ -53,7 +53,7 @@ class PostController extends Controller
 
         $post = PostModel::create([
             'title' => $request->title,
-            'description' => trim(strip_tags($request->description)),
+            'description' => $request->description,
             'slug' => $this->utilRepository->generatePostUniqueSlug($request->title),
             'user_id' => auth()->user()->id,
             'category_id' => $request->category
@@ -105,7 +105,7 @@ class PostController extends Controller
                 return redirect()->route('home')->with('error', 'You are not authorized to edit this post');
             }
             $post->title = $request->title;
-            $post->description = trim(strip_tags($request->description));
+            $post->description = $request->description;
             $post->category_id = $request->category_id;
             $post->slug = $this->utilRepository->generatePostUniqueSlug($request->title);
             $post->save();

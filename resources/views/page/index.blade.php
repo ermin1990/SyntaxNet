@@ -32,7 +32,7 @@
                                     <div class="block">
                                         <a href="{{ route('page.show', $page->slug) }}" class=" hover:text-blue-800 text-xl font-bold text-gray-900 mb-2">{{ $page->title }}</a>
                                     </div>
-                                    <p class="text-gray-600 mb-4">{{ \Illuminate\Support\Str::limit($page->textcontent, 120) }}</p>
+                                    <p class="text-gray-600 mb-4">{!! \Illuminate\Support\Str::limit($page->textcontent, 120) !!}</p>
                                     <div class="flex items-center justify-between text-sm text-gray-500">
                                         <span>Last edited: {{ $page->updated_at->format('F j, Y') }}</span>
 
@@ -43,11 +43,11 @@
                                             <div class="flex space-x-2 mt-2 justify-end">
                                                 <a href="{{ route('page.edit', $page->id) }}"
                                                    class="text-blue-600 hover:text-blue-800">
-                                                    @include('icons.delete')
+                                                    @include('icons.edit')
                                                 </a>
                                                 <a href="{{ route('page.delete', $page->id) }}"
                                                    class="text-red-600 hover:text-red-800">
-                                                    @include('icons.edit')
+                                                    @include('icons.delete')
                                                 </a>
                                             </div>
 

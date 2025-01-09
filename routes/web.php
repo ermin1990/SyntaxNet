@@ -41,13 +41,13 @@ Route::controller(CommentController::class)->prefix("/comment")
 
 Route::controller(PageController::class)->prefix("/page")
     ->name('page.')
-    ->middleware(['auth'])
+    ->middleware(['auth', AdmiEditorCheckMiddleware::class])
     ->group(function () {
         Route::view("/addnew", 'page.add')->name('addnew');
         Route::post("/store", 'store')->name('store');
         Route::get("/edit/{id}", 'edit')->name('edit');
-        Route::put("/update/{id}", 'update')->name('update');
-        Route::get("/delete/{id}", 'destroy')->name('delete');
+        Route::put("/update/{page}", 'update')->name('update');
+        Route::get("/delete/{page}", 'destroy')->name('delete');
     });
 
 

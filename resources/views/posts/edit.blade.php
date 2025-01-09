@@ -49,7 +49,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Content</label>
 
-                    <textarea name="description" rows="10"  class="mt-1 p-2 block w-full border-gray-300 shadow-sm">{{ old('description', $post->description) }}</textarea>
+                    <textarea name="description" id="textcontent" class="mt-1 p-2 block w-full border-gray-300 shadow-sm">{{ old('description', $post->description) }}</textarea>
                     @error('description')
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror

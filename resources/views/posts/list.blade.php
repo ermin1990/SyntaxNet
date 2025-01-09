@@ -5,7 +5,7 @@
         <span class="text-gray-500 text-sm">{{ $post->created_at->diffForHumans() }}</span>
     </div>
     <a href="{{ route('post.show', $post->slug) }}" class="text-2xl font-bold text-gray-900 mb-2 hover:text-blue-800">{{ $post->title }}</a>
-    <p class="text-gray-600 mb-4">{{ Str::limit($post->description, 150) }}</p>
+    <p class="text-gray-600 mb-4">{!! Str::limit(strip_tags(trim($post->description)), 50, ' ...') !!}</p>
     @if(isset($showAuthor))
     <p class="text-gray-600 mb-4 text-sm font-bold">Autor: {{ $post->user->name }}</p>
     @endif

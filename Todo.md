@@ -24,12 +24,15 @@
 
 ### Stranica
 1. Kreiranje stranice [✔]
-2. Editovanje stranice
+2. Editovanje stranice [✔]
 3. Prikaz stranice [✔]
+4. Brisanje stranice [✔]
 
 ### Profil
 1. Prikaz postova profila [✔]
 2. Zadnji komentari profila [✔]
 3. Kreirane stranice [✔]
 
-
+### Editor
+1. Dodati editor [✔]
+2. Prikaz editovan teksta. [✔]

@@ -3,7 +3,7 @@
         <div class="block">
             <a href="{{ route('page.show', $page->slug) }}" class="text-balance hover:text-blue-800 text-xl font-bold text-gray-900 mb-2">{{ $page->title }}</a>
         </div>
-        <p class="text-gray-600 mb-4">{{ \Illuminate\Support\Str::limit($page->textcontent, 50) }}</p>
+        <p class="text-gray-600 mb-4">{!! Str::limit(strip_tags(trim($page->textcontent, 100))) !!}</p>
 
         <div class="flex items-center justify-between text-sm text-gray-500">
             <span>Last edited: {{ $page->updated_at->format('F j, Y') }}</span>

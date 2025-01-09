@@ -9,10 +9,12 @@ use App\Repositories\UtilsRepostory;
 class PageController extends Controller
 {
     private $utilRepository;
+
     public function __construct()
     {
         $this->utilRepository = new UtilsRepostory();
     }
+
     public function index()
     {
         $pages = PageModel::with('user')->published()->paginate(5);
@@ -27,7 +29,6 @@ class PageController extends Controller
 
     public function addNew()
     {
-        dd('Page add method reached');
         return view('page.add');
     }
 
@@ -47,8 +48,10 @@ class PageController extends Controller
     }
 
 
-    public function edit(PageModel $page)
+    public function edit($id)
     {
+
+        $page = PageModel::with('user')->where('id', $id)->firstOrFail();
         return view('page.edit', compact('page'));
     }
 
@@ -64,7 +67,6 @@ class PageController extends Controller
                 'title' => $request->title,
                 'textcontent' => $request->textcontent,
                 'slug' => $this->utilRepository->generatePageUniqueSlug($request->title),
-                'status' => $request->status ?? 'draft',
                 'user_id' => auth()->id(),
             ]);
             return redirect()->route('page.index')->with('success', 'Page updated successfully.');
