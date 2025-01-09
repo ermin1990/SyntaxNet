@@ -2,6 +2,6 @@
 
 @section('content')
 
-@include('admin\users\list')
+@include('admin.users.list')
 
 @endSection
