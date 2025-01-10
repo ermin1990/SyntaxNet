@@ -14,10 +14,12 @@
                 </div>
 
                 <div>
+                    @if(Auth::check())
                     @if(Auth::id() === $comment->user_id || Auth::user()->role === 'admin')
                         <a href="{{route('comment.destroy', $comment->id)}}" class="text-red-600 hover:text-red-800">
                             @include('icons.delete')
                         </a>
+                    @endif
                     @endif
                 </div>
 

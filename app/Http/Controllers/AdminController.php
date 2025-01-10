@@ -39,8 +39,7 @@ class AdminController extends Controller
     }
 
 
-
-//    Users
+    //    Users
     public function users()
     {
 
@@ -76,8 +75,7 @@ class AdminController extends Controller
 
 
 
-
-//    Posts
+    //    Posts
     public function posts()
     {
         $posts = PostModel::with('user')->orderBy('created_at', 'desc')->paginate(5);
@@ -111,7 +109,7 @@ class AdminController extends Controller
 
 
 
-//    Pages
+    //    Pages
     public function pages()
     {
         $pages = PageModel::with('user')->orderBy('created_at', 'desc')->paginate(10);
@@ -141,7 +139,8 @@ class AdminController extends Controller
 
 
 
-//    Tags
+
+    //    Tags
     public function tags()
     {
         $tags = TagModel::all();
@@ -185,7 +184,8 @@ class AdminController extends Controller
     }
 
 
-//    Categories
+
+    //    Categories
     public function categories()
     {
         $categories = CategoryModel::all();
